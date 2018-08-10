@@ -16,15 +16,11 @@ $(document).ready(function() {
         {q:"How many planets are in the solar system?", a:"8", z:["8", "9", "10", "11"]},
         {q:"What is the second biggest planet in our Solar System", a:"Saturn", z:["Jupiter", "Saturn", "Neptune", "Earth"]},
         {q:"What is the hottest planet in our Solar System?", a:"Venus", z:["Mercury", "Venus", "Earth", "Jupiter"]},
-        // [],
-        {q:"What is the funniest planet name?", a:"Uranus", z:["Jupiter", "Venus", "Uranus", "Kepler-22B"]},
         {q:"What is the closest star to Earth besides the sun?", a:"Alpha Centauri", z:["Sirius", "Epsilon", "Orion", "Alpha Centauri"]},
-
-        // [],
-        // [],
-        // [],
-        // []
-        ];
+        {q:"What is the funniest planet name?", a:"Uranus", z:["Jupiter", "Venus", "Uranus", "Kepler-22B"]},
+        {q:"What planet does not exist?", a:"Alderaan", z:["Alderaan", "Hoth", "Endor", "Tatooine"]},
+        {q: "What is the fourth planet in the Lylat System?", a: "Corneria", z: ["Katina", "Sector Y", "Venom", "Corneria"]}
+    ];
         
         // for score
         var correct = 0;
@@ -106,9 +102,16 @@ $(document).ready(function() {
 
     // Reset game function
     function startGame() {
+
+        // reset variables
         correct = 0;
         incorrect = 0;
-        count = 15; // 2 mins NEED TO CHANGE
+        count = 60; // 1 min
+
+        //reset divs
+        $("#timerDiv").empty();
+        $("#questions").empty();
+
         generateQuestions();
         startTimer();
     };
@@ -143,6 +146,9 @@ $(document).ready(function() {
         $("#timerDiv").append($("<p>").text("Incorrect Answers: " + incorrect));
         console.log(questions.length - (correct + incorrect));
         $("#timerDiv").append($("<p>").text("Unanswered: " + (questions.length - (correct + incorrect))));
+        
+        // Restart Button
+        createButton("Restart");
     }
 
     // Creates submit button and restart button at the bottom of the page
