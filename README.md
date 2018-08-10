@@ -1,4 +1,4 @@
-#Crazy Cat Person Game
+#Trivia Game
 
 
 Created a psychic game where the user tries to guess a random letter in 9 guesses.
@@ -6,13 +6,13 @@ Created a psychic game where the user tries to guess a random letter in 9 guesse
 # Link to deployed site
 
 
-[Website](https://atton88.github.io/unit-4-game/)
+[Website](https://atton88.github.io/Trivia-Game/)
 
 [GitHub Profile](https://github.com/atton88)
 
 # Images
 
-![About Me](\assets\images\readme1.PNG)
+![About Me](\assets\images\1.PNG)
 
 # technology used
 
@@ -25,54 +25,47 @@ Created a psychic game where the user tries to guess a random letter in 9 guesse
 
 # code snippets
 
-Game function
+Appending radio buttons was pretty crazy at first, but I ended up finding a way to make it readable and simple
 ```
-// On-click function, adds value to score, checks for win and loss conditions
-$(".container").on("click", ".isButton", function() {
-    // console.log(this.value);
-    score += parseInt(this.value);
-    $("#scoreText").text(score);
+for (j = 0; j < questions[i].z.length; j++) {
+    var tempInput = $("<input>"); //temp div to hold new div
 
-    // Lose condition, updates losses and restarts
-    if (score > goal) {
-        alert("You became a crazy cat person. You lose.");
-        losses++;
-        $("#lossesText").text(losses);
-        startGame();
-    }
-    //Win condition, updates wins and restarts
-    else if (score === goal) {
-        alert("You're weird, but at least you're not crazy. You win!");
-        wins++;
-        $("#winsText").text(wins);
-        startGame();
+    // add attributes to input (radio, name, value)
+    tempInput.attr("type", "radio");
+    tempInput.attr("name", "radio"+i);  
+    tempInput.attr("data-answer", questions[i].z[j]);
+    
+    //append the tempDiv and text to form
+    tempForm.append(tempInput);
+    tempForm.append(tempInput.attr("data-answer"));
+}
     }
 });
 ```
-
-Animation for pictures
-```
-/* Animation for pics hover */
-.isButton:hover {
-    animation-name: picAnimation;
-    animation-duration: 5s;
-}
-
-@keyframes picAnimation {
-    0% {
-        transform: translateY(-10%);
+//check for correct and incorrect answers
+for (var i = 0; i < questions.length; i++) {
+    console.log($("input[name=radio"+i+"]:checked").attr("data-answer"));
+    console.log(questions[i].a);
+    if (questions[i].a === $("input[name=radio"+i+"]:checked").attr("data-answer")) {
+        correct++;
     }
-    100% {
-        transform: translateY(-10%);
+    else if ($("input[name=radio"+i+"]:checked").attr("data-answer")){
+        incorrect++;
     }
-}
+    console.log($("input[name=radio"+i+"]:checked"));
+        }
+
+// clear appended elements
+$("#timerDiv").empty();
+$("#questions").empty();
+    }
 ```
 
 # Learning points
-- Learned to use the on click functions
-- Learned to store values into elements
-- Learned to animate elements with CSS
-- Learned to implement JavaScript
+- More learning with jQuery and attributes
+- Learned to append and add attributes more neatly
+- Learned to use radio buttons and get values from them
+- Learned to change the html entirely and build it back up in javascript
 
 # Author 
 [Andrew Ton](https://github.com/atton88)
