@@ -1,0 +1,55 @@
+/* 
+Andrew Ton
+Assignment 5 - Trivia Game
+style.css  
+*/
+
+.test:hover {
+   background-color: red; 
+
+}
+
+#content {
+    background-color: lavender;
+}
+
+h1 {
+    text-shadow: 1px 1;
+} 
+
+form {
+    font-size: 20px;    
+    color: rgb(34, 164, 187);
+}
+
+input {
+    margin-left: 20px;
+    margin-right: 5px;
+
+}
+
+#startButton {
+    margin-bottom: -35px;
+}
+
+
+
+
+
+
+
+/* Animation for pics hover */
+.isButton:hover {
+    animation-name: picAnimation;
+    animation-duration: 5s;
+}
+
+@keyframes picAnimation {
+    0% {
+        transform: translateY(-10%);
+    }
+    100% {
+        transform: translateY(-10%);
+    }
+}
+
